@@ -1,0 +1,151 @@
+import turtle as tr
+import math
+import random as ran
+
+def losowanie():
+    wylosowana_liczba = ran.randint(5, 25)
+    return wylosowana_liczba
+
+def kierunek():
+    wektor_kierunku = ran.randint(-1, 1)
+    return wektor_kierunku
+
+def uklad_wspolrzednych():
+    tr.bgcolor('gray')
+    tr.pensize(1)
+    tr.pencolor('white')
+    tr.penup()
+    tr.goto(-400, 0)
+    tr.pendown()
+    tr.goto(400, 0)
+    tr.penup()
+    tr.goto(0, -400)
+    tr.pendown()
+    tr.goto(0, 400)
+    tr.penup()
+
+
+uklad_wspolrzednych()
+
+ilosc_punktow = 200
+promien = 1
+tr.hideturtle()
+
+""" red points """
+
+x = 0
+y = 0
+tr.pensize(2)
+granice_czerwone_X = []
+granice_czerwone_Y = []
+
+for i in range(1, ilosc_punktow):
+    r = 1 - i / ilosc_punktow
+    g = 0.05
+    b = 0.05
+    tr.pencolor(r, g, b)
+    tr.goto(x, y)
+    tr.pendown()
+    tr.circle(promien, 360, 6)
+    tr.penup()
+    x = x + losowanie() * kierunek()
+    y = y + losowanie() * kierunek()
+    granice_czerwone_X.append(x)
+    granice_czerwone_Y.append(y)
+
+max_x = max(granice_czerwone_X)
+min_x = min(granice_czerwone_X)
+max_y = max(granice_czerwone_Y)
+min_y = min(granice_czerwone_Y)
+tr.pensize(1)
+tr.pencolor('red')
+tr.goto(min_x, min_y)
+tr.pendown()
+tr.goto(max_x, min_y)
+tr.goto(max_x, max_y)
+tr.goto(min_x, max_y)
+tr.goto(min_x, min_y)
+tr.penup()
+
+
+""" green points """
+
+granice_zielone_X = []
+granice_zielone_Y = []
+x = 0
+y = 0
+tr.pensize(2)
+for k in range(1, ilosc_punktow):
+    r = 0.05
+    g = 1 - k / ilosc_punktow
+    b = 0.05
+    tr.pencolor(r, g, b)
+    tr.goto(x, y)
+    tr.pendown()
+    tr.circle(promien, 360, 6)
+    tr.penup()
+    x = x + losowanie() * kierunek()
+    y = y + losowanie() * kierunek()
+    granice_zielone_X.append(x)
+    granice_zielone_Y.append(y)
+ 
+
+max_x = max(granice_zielone_X)
+min_x = min(granice_zielone_X)
+max_y = max(granice_zielone_Y)
+min_y = min(granice_zielone_Y)
+tr.pensize(1)
+tr.pencolor('green')
+tr.goto(min_x, min_y)
+tr.pendown()
+tr.goto(max_x, min_y)
+tr.goto(max_x, max_y)
+tr.goto(min_x, max_y)
+tr.goto(min_x, min_y)
+tr.penup()
+
+
+""" blue points """
+
+granice_niebieskie_X = []
+granice_niebieskie_Y = []
+x = 0
+y = 0
+tr.pensize(2)
+
+for w in range(1, ilosc_punktow):
+    r = 0.05
+    g = 0.05
+    b = 1 - w / ilosc_punktow
+    tr.pencolor(r, g, b)
+    tr.goto(x, y)
+    tr.pendown()
+    tr.circle(promien, 360, 6)
+    tr.penup()
+    x = x + losowanie() * kierunek()
+    y = y + losowanie() * kierunek()
+    granice_niebieskie_X.append(x)
+    granice_niebieskie_Y.append(y)
+ 
+
+max_x = max(granice_niebieskie_X)
+min_x = min(granice_niebieskie_X)
+max_y = max(granice_niebieskie_Y)
+min_y = min(granice_niebieskie_Y)
+tr.pensize(1)
+tr.pencolor('blue')
+tr.goto(min_x, min_y)
+tr.pendown()
+tr.goto(max_x, min_y)
+tr.goto(max_x, max_y)
+tr.goto(min_x, max_y)
+tr.goto(min_x, min_y)
+tr.penup()
+
+ 
+
+
+def main():
+    tr.setup()
+    tr.done()
+main()
